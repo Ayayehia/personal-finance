@@ -2,6 +2,10 @@ import React from "react";
 import DesktopImage from "../assets/images/desktop-login.png";
 import logo from "../assets/images/logo.png";
 import { Card } from "../components/ui/card";
+import { Button } from "../components/ui/button";
+import { Form } from "../components/ui/form";
+import { Input } from "../components/ui/input";
+import { Label } from "../components/ui/label";
 
 const Login = () => {
   return (
@@ -25,21 +29,32 @@ const Login = () => {
       </div>
       <div className="bg-blue-300 w-3/5 ">
         <div className="flex items-center justify-center h-full">
-          <Card className="flex flex-col items-center justify-center p-8 space-y-8 max-w-md  w-full">
+          <Card className="flex flex-col items-start p-8 space-y-8 max-w-md  w-full">
             <h2 className="text-4xl font-bold text-center">Login</h2>
-            <input
-              type="email"
-              placeholder="Email"
-              className="w-2/5 p-2 my-2 rounded-md"
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              className="w-2/5 p-2 my-2 rounded-md"
-            />
-            <button className="bg-blue-500 text-white p-2 rounded-md w-full">
-              Login
-            </button>
+            <Form>
+              <div className="flex flex-col items-start w-full">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  required
+                />
+              </div>
+              <div className="flex flex-col items-start w-full">
+                <Label htmlFor="password">Password</Label>
+                <Input
+                  id="password"
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  required
+                />
+              </div>
+            </Form>
+
+            <Button className="w-full">Login</Button>
           </Card>
         </div>
       </div>
