@@ -27,13 +27,15 @@ const Login = () => {
           </p>
         </section>
       </div>
-      <div className="bg-blue-300 w-3/5 ">
+      <div className=" w-3/5 ">
         <div className="flex items-center justify-center h-full">
           <Card className="flex flex-col items-start p-8 space-y-8 max-w-md  w-full">
             <h2 className="text-4xl font-bold text-center">Login</h2>
             <Form>
               <div className="flex flex-col items-start w-full">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="mb-2">
+                  Email
+                </Label>
                 <Input
                   id="email"
                   name="email"
@@ -43,7 +45,9 @@ const Login = () => {
                 />
               </div>
               <div className="flex flex-col items-start w-full">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password" className="mb-2">
+                  Password
+                </Label>
                 <Input
                   id="password"
                   name="password"
