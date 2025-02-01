@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import DesktopImage from "../assets/images/desktop-login.png";
 import logo from "../assets/images/logo.png";
 import { Card } from "../components/ui/card";
@@ -7,7 +5,6 @@ import { Card } from "../components/ui/card";
 import { supabase } from "../supabaseClient";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
-import { User } from "@supabase/supabase-js";
 
 const customStyles = {
   container: {
@@ -31,42 +28,6 @@ const customStyles = {
 };
 
 const Login = () => {
-  // To do clean up and refactor
-  // to do nagigate to dashboard after login
-  const [user, setUser] = useState<User | null>(null);
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    // Get initial session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-    });
-
-    // Listen for auth changes
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
-  if (user) {
-    return (
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-        <div className="bg-white p-8 rounded-lg shadow-md w-96">
-          <h1 className="text-2xl font-bold mb-6">Welcome, {user.email}</h1>
-          <button
-            onClick={() => supabase.auth.signOut()}
-            className="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
-          >
-            Sign Out
-          </button>
-        </div>
-      </div>
-    );
-  }
   return (
     <div className="lg:flex w-full min-h-screen">
       <div className="lg:w-2/5 hidden lg:block">
